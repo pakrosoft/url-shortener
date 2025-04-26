@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Redirect requests that are not existing files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite requests like yourdomain.com/abcde to redirect.php?code=abcde
+RewriteRule ^([a-zA-Z0-9]+)$ redirect.php?code=$1 [L,QSA]
+
+# Optional: Redirect the base URL itself to index.php (if needed)
+# RewriteRule ^$ index.php [L]
